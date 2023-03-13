@@ -1,0 +1,76 @@
+.login{
+    width:100vw;
+    height: 100vh;
+    background-color: rgb(252, 246, 239);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginWrapper{
+    width: 70%;
+    height: 70%;
+    display: flex;
+    color:#f67629;
+
+}
+.loginLeft, .loginRight{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.loginLogo{
+    user-select: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 5rem;
+    font-weight: 800;
+}
+.loginDesc{
+    font-size: 19px;
+    font-family: cursive, Verdana, sans-serif;
+    user-select: none;
+    color: #341808da;
+    font-weight: 500;
+}
+.loginBox{
+    box-shadow: 1px 4px 10px 1px #3418083c;
+    height: 300px;
+    padding:20px;
+    background-color: white;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.loginInput{
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #f67629;
+    font-size: 18px;
+    padding-left: 20px;
+    outline-color: #f67829e9;
+}
+input::placeholder{
+    color: #3c1806ae;
+}
+.loginButton{
+    height: 3rem;
+    border-radius: 10px;
+    border: none;
+    background-color: #f89827;
+    color:white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.loginRegisterButton{
+    height: 2.6rem;
+    border-radius: 10px;
+    border: none;
+    background-color: #78bb48;
+    color:white;
+    font-weight: 500;
+    font-size: 1.2rem;
+    cursor: pointer;
+}

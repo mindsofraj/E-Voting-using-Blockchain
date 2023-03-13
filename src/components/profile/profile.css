@@ -1,0 +1,29 @@
+.profileContainer{
+    flex:10;
+    width: 100%;
+    min-height: 20vh;
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profileImg{
+    width: 130px;
+    height:130px;
+    border: 5px solid #366dbb;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.detailTable{
+    margin: 2rem;
+}
+.detailTable td{
+    padding: .6rem;
+    color: #363a3b;
+}
+.detailTable>tbody>tr td:first-child{
+    color: #366ebb;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
