@@ -37,11 +37,13 @@ export default function Topbar() {
           </Link>
         </div>
         <Tooltip title="Profile" arrow>
-          <img
-            src="https://www.behindwoods.com/tamil-movies/slideshow/the-ultimate-dream-girl/images/nazariya-nazim---eyes.jpg"
-            alt="Profile"
-            className="topbarImg"
-          />
+          <Link to="/profile">
+            <img
+              src="https://www.behindwoods.com/tamil-movies/slideshow/the-ultimate-dream-girl/images/nazariya-nazim---eyes.jpg"
+              alt="Profile"
+              className="topbarImg"
+            />
+          </Link>
         </Tooltip>
       </div>
     </div>

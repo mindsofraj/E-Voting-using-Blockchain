@@ -22,6 +22,7 @@ hr{
     color: rgb(67, 67, 72);
 }
 .sidebarListItem{
+    color: rgb(67, 67, 72);
     user-select: none;
     display: flex;
     align-items: center;
@@ -31,11 +32,11 @@ hr{
     letter-spacing: .05rem;
     cursor: pointer;
 }
-.sidebarListItem:last-of-type{
-    background-color:#366ebb;
-    margin-top: auto;
+#lastItem{
+    margin-top: 1.4rem;
     margin-bottom: 0;
-    color:whitesmoke;
+    color: whitesmoke;
+    background-color: #366ebb;
 }
 .sidebarListItem:hover{
     font-weight: 600;
@@ -44,7 +45,7 @@ hr{
     box-shadow: 0px 4px 5px 0px rgba(47, 154, 183, 0.477);
 
 }
-.sidebarListItem:last-child:hover{
+#lastItem:hover{
     border:none;
     font-weight: 600;
     background-color: #f67629;

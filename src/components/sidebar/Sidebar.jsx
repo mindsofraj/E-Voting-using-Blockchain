@@ -20,24 +20,27 @@ export default function Sidebar() {
               <span className="sidebarListItemText">Instructions</span>
             </li>
           </Link>
-          <Link to="/login">
+          <Link to="/candidates">
             <li className="sidebarListItem">
               <People />
               <span className="sidebarListItemText">Candidates</span>
             </li>
           </Link>
-          <li className="sidebarListItem">
-            <HowToVote />
-            <span className="sidebarListItemText">Voting Area</span>
-          </li>
-
-          <li className="sidebarListItem">
-            <Leaderboard />
-            <span className="sidebarListItemText">Result</span>
-          </li>
+          <Link to="/voting-area">
+            <li className="sidebarListItem">
+              <HowToVote />
+              <span className="sidebarListItemText">Voting Area</span>
+            </li>
+          </Link>
+          <Link to="/result">
+            <li className="sidebarListItem">
+              <Leaderboard />
+              <span className="sidebarListItemText">Result</span>
+            </li>
+          </Link>
           <hr />
           <Link to="/login">
-            <li className="sidebarListItem">
+            <li className="sidebarListItem" id="lastItem">
               <Logout />
               <span className="sidebarListItemText">Logout</span>
             </li>

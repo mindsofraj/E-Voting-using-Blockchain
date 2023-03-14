@@ -1,8 +1,8 @@
-import "./profile.css";
+import "./profileComp.css";
 
-export default function Profile() {
+export default function ProfileComp() {
   return (
-    <div className="profileContainer">
+    <div className="profileCompContainer">
       <img
         className="profileImg"
         src="https://www.behindwoods.com/tamil-movies/slideshow/the-ultimate-dream-girl/images/nazariya-nazim---eyes.jpg"
@@ -18,6 +18,10 @@ export default function Profile() {
             <tr>
               <td>Email:</td>
               <td>nazi@gmail.com</td>
+            </tr>
+            <tr>
+              <td>Phone No:</td>
+              <td>8124592262</td>
             </tr>
             <tr>
               <td>Aadhaar No:</td>
