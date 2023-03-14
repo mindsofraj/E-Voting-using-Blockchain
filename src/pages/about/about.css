@@ -1,0 +1,36 @@
+.aboutContainer{
+    display: flex;
+    width: 100%;
+}
+.about{
+    flex:10;
+    width: 100%;
+    height: 92vh;
+   
+}
+.bold{
+    font-weight: 500;
+}
+.aboutWrapper{
+    width: 80%;
+    color:rgb(255, 255, 255);
+    margin: 1rem 2rem;
+    user-select: none;
+}
+.title{
+    font-size: 3rem;
+    font-weight: bold;
+    background-image: linear-gradient(#366ebb,#6dc2e9);
+    padding: 10px 1rem;
+    border-radius: .6rem;
+
+}
+.para{
+    color:#595b5e;
+    padding: 2rem;
+    line-height: 2;
+    border-radius: .6rem;
+    letter-spacing: .1px;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+}

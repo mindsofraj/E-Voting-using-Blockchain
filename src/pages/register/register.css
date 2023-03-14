@@ -5,13 +5,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: url("https://assemblyvoting.com/wp-content/uploads/Photo_21.jpg");
+    background-size: cover;
+    background-position: center;
+    background-blend-mode:overlay;
 }
 
 .registerWrapper{
     width: 70%;
     height: 70%;
     display: flex;
-    color:#f67629;
 
 }
 .registerLeft, .registerRight{
@@ -25,6 +28,9 @@
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: 5rem;
     font-weight: 800;
+    background-image: -webkit-linear-gradient(#f89827, #f67629);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .registerDesc{
     font-size: 19px;
@@ -58,7 +64,7 @@ input::placeholder{
     height: 3rem;
     border-radius: 10px;
     border: none;
-    background-color: #78bb48;
+    background-image: -webkit-linear-gradient(#78bb48, #348035);
     color:white;
     font-weight: bold;
     font-size: 1.5rem;
@@ -72,4 +78,7 @@ input::placeholder{
     font-weight: 500;
     font-size: 1.2rem;
     cursor: pointer;
+}
+.loginLink{
+    width:100%;
 }
