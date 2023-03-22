@@ -1,11 +1,18 @@
 import "./profileComp.css";
+import Axios from "axios";
+import { useState } from "react";
 
 export default function ProfileComp() {
+  const [voterDetails, setVoterDetails] = useState([]);
+  Axios.get("http://localhost:3000/profile").then((res) => {
+    setVoterDetails(res.data[1]);
+  });
+
   return (
     <div className="profileCompContainer">
       <img
         className="profileImg"
-        src="https://www.behindwoods.com/tamil-movies/slideshow/the-ultimate-dream-girl/images/nazariya-nazim---eyes.jpg"
+        src="https://superawesomevectors.com/wp-content/uploads/2017/03/family-guy-peter-griffin-vector-thumb-275x195.jpg"
         alt="Profile Image"
       />
       <div className="profileDetails">
@@ -13,20 +20,20 @@ export default function ProfileComp() {
           <tbody>
             <tr>
               <td>Name:</td>
-              <td>Nazariya</td>
+              <td>{voterDetails.name}</td>
             </tr>
             <tr>
               <td>Email:</td>
-              <td>nazi@gmail.com</td>
+              <td>{voterDetails.email}</td>
             </tr>
             <tr>
-              <td>Phone No:</td>
-              <td>8124592262</td>
+              <td>Mobile:</td>
+              <td>{voterDetails.mobile}</td>
             </tr>
-            <tr>
+            {/* <tr>
               <td>Aadhaar No:</td>
               <td>4816 3433 6673</td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>

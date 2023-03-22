@@ -41,7 +41,7 @@
 }
 .registerBox{
     box-shadow: 1px 4px 10px 1px #3418083c;
-    min-height: 400px;
+    min-height: 490px;
     padding:20px;
     background-color: white;
     border-radius: 1rem;
@@ -76,9 +76,20 @@ input::placeholder{
     border: none;
     color:#f08e1e;
     font-weight: 500;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     cursor: pointer;
 }
 .loginLink{
     width:100%;
+}
+.registerStatus{
+    display: block;
+    color:#f67629;
+    font-weight: 500;
+    margin: .2rem;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
 }

@@ -39,7 +39,7 @@ export default function Topbar() {
         <Tooltip title="Profile" arrow>
           <Link to="/profile">
             <img
-              src="https://www.behindwoods.com/tamil-movies/slideshow/the-ultimate-dream-girl/images/nazariya-nazim---eyes.jpg"
+              src="https://superawesomevectors.com/wp-content/uploads/2017/03/family-guy-peter-griffin-vector-thumb-275x195.jpg"
               alt="Profile"
               className="topbarImg"
             />

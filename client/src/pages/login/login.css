@@ -83,3 +83,9 @@ input::placeholder{
 .link{
     width:100%;
 }
+.loginStatus{
+    display: block;
+    color:#f67629;
+    font-weight: 500;
+    margin: .2rem;
+}

@@ -32,7 +32,7 @@ export default function Sidebar() {
               <span className="sidebarListItemText">Voting Area</span>
             </li>
           </Link>
-          <Link to="/result">
+          <Link to="/results">
             <li className="sidebarListItem">
               <Leaderboard />
               <span className="sidebarListItemText">Result</span>

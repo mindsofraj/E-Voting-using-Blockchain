@@ -1,7 +1,7 @@
 .sidebar{
     display: flex;
     flex: 2;
-    height: 92vh;
+    min-height: 92vh;
 }
 .sidebarWrapper{
     padding: 20px;
@@ -32,6 +32,7 @@ hr{
     letter-spacing: .05rem;
     cursor: pointer;
 }
+
 #lastItem{
     margin-top: 1.4rem;
     margin-bottom: 0;
