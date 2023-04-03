@@ -9,9 +9,8 @@
 }
 
 .profileImg{
-    width: 150px;
-    height:150px;
-    border: 5px solid #366dbb;
+    width: 170px;
+    height:170px;
     object-fit: cover;
     border-radius: 50%;
 }

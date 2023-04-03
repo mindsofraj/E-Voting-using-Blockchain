@@ -8,7 +8,7 @@ const Information = () => {
       <div className="instructionWrapper">
         <h1 className="title">Instructions</h1>
         <h3 className="subtitle">Welcome</h3>
-        <p className="text">
+        <div className="text">
           To vote for your favourite Candidate,
           <ul className="list">
             <li>
@@ -31,7 +31,7 @@ const Information = () => {
               And that's it, easy-peasy! <b>Happy Voting!</b>
             </li>
           </ul>
-        </p>
+        </div>
       </div>
     </div>
   );

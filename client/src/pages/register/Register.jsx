@@ -1,6 +1,6 @@
 import "./register.css";
 import Axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function Register() {
@@ -13,6 +13,8 @@ export default function Register() {
     "Fill your details as on Aadhaar Card"
   );
 
+  const navigate = useNavigate();
+
   const registerVoter = (e) => {
     e.preventDefault();
     Axios.post("http://localhost:3000/register", {
@@ -22,7 +24,11 @@ export default function Register() {
       aadhaar: aadhaar,
       mobile: mobile,
     }).then((res) => {
-      setRegisterStatus(res.data.message);
+      if (res.data.status === 409) {
+        setRegisterStatus(res.data.message);
+      } else {
+        navigate("/login");
+      }
     });
   };
 

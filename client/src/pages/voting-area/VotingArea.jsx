@@ -11,7 +11,7 @@ export default function VotingArea() {
         <div className="voting">
           <div className="votingWrapper">
             <h1 className="title">Voting Area</h1>
-            <p className="para">This voting area.</p>
+            <p className="para">This Voting area.</p>
           </div>
         </div>
       </div>

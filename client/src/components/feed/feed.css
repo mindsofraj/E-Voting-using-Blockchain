@@ -1,3 +1,12 @@
 .feed{
     flex: 10;
+    width:100vw;
+    height: 92vh;
+    background-color: rgb(252, 246, 239);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("https://www.parisschoolofeconomics.eu/IMG/arton8422.png");
+    background-size: cover;
+    background-position: center;
 }

@@ -8,13 +8,19 @@ import {
   Logout,
 } from "@mui/icons-material";
 import { Tooltip } from "@mui/material";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
 
 export default function Topbar() {
+  const { currentUser } = useContext(AuthContext);
+
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
         <Link to="/">
-          <span className="logo">N-Vaaku</span>
+          <span className="logo">
+            <span className="smallN">N</span>Vaaku
+          </span>
         </Link>
       </div>
       <div className="topbarCenter">
@@ -36,15 +42,20 @@ export default function Topbar() {
             <span className="topbarLink link">About Us</span>
           </Link>
         </div>
-        <Tooltip title="Profile" arrow>
-          <Link to="/profile">
-            <img
-              src="https://superawesomevectors.com/wp-content/uploads/2017/03/family-guy-peter-griffin-vector-thumb-275x195.jpg"
-              alt="Profile"
-              className="topbarImg"
-            />
-          </Link>
-        </Tooltip>
+        <Link to="/profile">
+          {currentUser && (
+            <div className="userBox">
+              <Tooltip title="Profile" arrow>
+                <img
+                  src={`https://ui-avatars.com/api/?name=${currentUser.name}&background=0D8ABC&color=fff`}
+                  alt="Profile"
+                  className="topbarImg"
+                />
+              </Tooltip>
+              <div className="profileName link">{currentUser.name}</div>
+            </div>
+          )}
+        </Link>
       </div>
     </div>
   );

@@ -1,21 +1,36 @@
 import "./login.css";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
 import Axios from "axios";
+import { AuthContext } from "../../context/authContext";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  Axios.defaults.withCredentials = true;
+
+  const [inputs, setInputs] = useState({
+    email: "",
+    password: "",
+  });
   const [loginStatus, setLoginStatus] = useState(
     "Enter you Email and Password"
   );
 
+  const { login } = useContext(AuthContext);
+
+  const handleChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
   const loginVoter = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:3000/login", {
-      email: email,
-      password: password,
-    }).then((res) => setLoginStatus(res.data.message));
+    Axios.post("http://localhost:3000/login", inputs).then((res) => {
+      if (res.data.status === 401) {
+        setLoginStatus(res.data.message);
+      } else {
+        login(res.data);
+        navigate("/");
+      }
+    });
   };
 
   return (
@@ -32,16 +47,18 @@ export default function Login() {
             <span className="loginStatus">{loginStatus}</span>
             <input
               type="email"
+              name="email"
               placeholder="Email"
               className="loginInput"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleChange}
               required
             />
             <input
               type="password"
+              name="password"
               placeholder="Password"
               className="loginInput"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handleChange}
               required
             />
             <button type="submit" className="loginButton">

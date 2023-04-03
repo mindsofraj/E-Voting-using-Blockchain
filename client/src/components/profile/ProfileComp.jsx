@@ -1,18 +1,16 @@
 import "./profileComp.css";
 import Axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../context/authContext";
 
 export default function ProfileComp() {
-  const [voterDetails, setVoterDetails] = useState([]);
-  Axios.get("http://localhost:3000/profile").then((res) => {
-    setVoterDetails(res.data[1]);
-  });
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <div className="profileCompContainer">
       <img
         className="profileImg"
-        src="https://superawesomevectors.com/wp-content/uploads/2017/03/family-guy-peter-griffin-vector-thumb-275x195.jpg"
+        src={`https://ui-avatars.com/api/?name=${currentUser.name}&background=0D8ABC&color=fff`}
         alt="Profile Image"
       />
       <div className="profileDetails">
@@ -20,20 +18,20 @@ export default function ProfileComp() {
           <tbody>
             <tr>
               <td>Name:</td>
-              <td>{voterDetails.name}</td>
+              <td>{currentUser.name}</td>
             </tr>
             <tr>
               <td>Email:</td>
-              <td>{voterDetails.email}</td>
+              <td>{currentUser.email}</td>
             </tr>
             <tr>
               <td>Mobile:</td>
-              <td>{voterDetails.mobile}</td>
+              <td>{currentUser.mobile}</td>
             </tr>
-            {/* <tr>
-              <td>Aadhaar No:</td>
-              <td>4816 3433 6673</td>
-            </tr> */}
+            <tr>
+              <td>Aadhaar:</td>
+              <td>{currentUser.aadhaar}</td>
+            </tr>
           </tbody>
         </table>
       </div>

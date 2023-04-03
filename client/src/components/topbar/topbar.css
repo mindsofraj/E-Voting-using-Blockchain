@@ -13,7 +13,21 @@ a{
 .topbarLeft {
     flex: 3;
 }
+.smallN{
+    font-size: 20px;
+    background-color:#dfeff3;
+    color:#365e96;
+    border-radius: 50%;
+    padding: 5px .6rem;
+    letter-spacing: 0;
+    margin-right: .3rem;
+    box-shadow: 1px 1px 2px rgb(8, 38, 73);
+}
+
 .logo{
+    display: flex;
+    align-items: center;
+    text-shadow: 0 0 2px rgba(12, 30, 73, 0.506);
     user-select: none;
     font-size: 24px;
     margin-left: 20px;
@@ -21,6 +35,11 @@ a{
     cursor:pointer;
     letter-spacing: .2rem;
     color: #fff
+}
+.logo:hover .smallN {
+    transition: all .2s ease;
+    background-color:#365e96;
+    color: #dfeff3;
 }
 .topbarCenter {
     flex: 5;
@@ -74,9 +93,20 @@ a{
     color: white;
 }
 .topbarImg{
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
+    border: 2px solid white;
     border-radius: 50%;
     object-fit: cover;
     cursor:pointer;
+}
+.userBox {
+    display: flex;
+    align-items: center;
+
+}
+.profileName{
+    margin-left: .5rem;
+    font-weight: 700;
+    color: #dfeff3;
 }

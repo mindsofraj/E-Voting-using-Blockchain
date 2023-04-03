@@ -2,6 +2,7 @@
     display: flex;
     flex: 2;
     min-height: 92vh;
+    z-index: 100;
 }
 .sidebarWrapper{
     padding: 20px;

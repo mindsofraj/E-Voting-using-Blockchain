@@ -30,13 +30,13 @@ export default function Results() {
               </div>
               <div className="table">
                 <table>
-                  <thead>
+                  <tr>
                     <th>Party</th>
                     <th>Vote Count</th>
-                  </thead>
+                  </tr>
                   <tbody>
                     {userData.map((user) => (
-                      <tr>
+                      <tr key={user.id}>
                         <td>{user.candidateName}</td>
                         <td>{user.voteCount}</td>
                       </tr>

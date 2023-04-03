@@ -8,8 +8,13 @@ import {
   People,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
 
 export default function Sidebar() {
+  const { logout } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
+
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
@@ -39,12 +44,12 @@ export default function Sidebar() {
             </li>
           </Link>
           <hr />
-          <Link to="/login">
-            <li className="sidebarListItem" id="lastItem">
+          {currentUser && (
+            <li onClick={logout} className="sidebarListItem" id="lastItem">
               <Logout />
               <span className="sidebarListItemText">Logout</span>
             </li>
-          </Link>
+          )}
         </ul>
       </div>
     </div>
