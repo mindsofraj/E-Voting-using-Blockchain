@@ -25,12 +25,62 @@
     border-radius: .6rem;
 
 }
-.para{
-    color:#595b5e;
-    padding: 2rem;
-    line-height: 2;
-    border-radius: .6rem;
-    letter-spacing: .1px;
-    font-size: 1.4rem;
-    margin-top: 1rem;
+
+/* Cards */
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1rem auto;
+    align-items: flex-start;
+    
+}
+.candidateCard{
+    background-color: aliceblue;
+    box-shadow: 0 2px 5px 0 rgba(0, 00, 0, .2);
+    border: 1px solid #4348503f;
+    overflow: hidden;
+    border-radius: .4rem;
+    position: relative;
+}
+
+.cardImg{
+    overflow: hidden;
+    padding: 0;
+    background-color: #0D8ABC;
+}
+.cardImg .candidateId {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 11px;
+    background-color: #6dc2e9;
+    border-radius: 0 0 .4rem 0;
+}
+.cardImg > img {
+    display: block;
+    width: 100%;
+    object-fit: contain;
+    max-height: 150px;
+    transition: 200ms transform ease-in-out;
+}
+
+.cardDetails{
+    text-align: center;
+    background-color: #6dc2e9;
+    color: aliceblue;
+    padding: .6rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+.cardDetails > p {
+    text-transform: uppercase;
+}
+.cardButton {
+    padding: .5rem;
+}
+
+.candidateCard:hover > .cardImg > img {
+    transform: scale(1.3);
 }

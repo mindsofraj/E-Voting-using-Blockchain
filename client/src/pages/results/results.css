@@ -25,20 +25,22 @@
     justify-content: center;
     align-items: center;
 }
-table{
+.resultTable{
     font-size: 1.3rem;
-    margin: 2rem 0 0 5rem;
     border-collapse: collapse;
     text-align: left;
+    height: 100% ;
+    margin: auto 0 auto 5rem;
 }
-table td, th{
+
+.resultTable td, th{
     padding: .7rem;
 
 }
-table td{
+.resultTable td{
     color: rgb(28, 28, 28);   
 }
-/* table td:last-child{
+.resultTable td:last-child{
     text-align: center;
-} */
+}
 

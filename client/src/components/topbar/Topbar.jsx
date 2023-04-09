@@ -24,13 +24,16 @@ export default function Topbar() {
         </Link>
       </div>
       <div className="topbarCenter">
-        <div className="searchBar">
+        {/* <div className="searchBar">
           <Search className="searchIcon" />
           <input
             type="text"
             placeholder="Search for Candidates..."
             className="searchInput"
           />
+        </div> */}
+        <div className="welcomMsg">
+          <p>Welcom to N-Vaaku, {currentUser.name}</p>
         </div>
       </div>
       <div className="topbarRight">
@@ -48,7 +51,6 @@ export default function Topbar() {
               <Tooltip title="Profile" arrow>
                 <img
                   src={`https://ui-avatars.com/api/?name=${currentUser.name}&background=0D8ABC&color=fff`}
-                  alt="Profile"
                   className="topbarImg"
                 />
               </Tooltip>

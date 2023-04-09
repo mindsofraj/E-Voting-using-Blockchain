@@ -28,22 +28,19 @@ export default function Results() {
               <div className="chart">
                 <PieChart chartData={chartData} />
               </div>
-              <div className="table">
-                <table>
-                  <tr>
-                    <th>Party</th>
-                    <th>Vote Count</th>
+              <table className="resultTable">
+                <tr>
+                  <th>Party</th>
+                  <th>Vote Count</th>
+                </tr>
+
+                {userData.map((user) => (
+                  <tr key={user.id}>
+                    <td>{user.candidateName}</td>
+                    <td>{user.voteCount}</td>
                   </tr>
-                  <tbody>
-                    {userData.map((user) => (
-                      <tr key={user.id}>
-                        <td>{user.candidateName}</td>
-                        <td>{user.voteCount}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                ))}
+              </table>
             </div>
           </div>
         </div>

@@ -44,7 +44,14 @@ a{
 .topbarCenter {
     flex: 5;
 }
-.searchBar{
+.welcomMsg > p {
+    color: aliceblue;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    user-select: none;
+}
+/* .searchBar{
     width: 100%;
     height: 30px;
     background-color: white;
@@ -65,7 +72,7 @@ a{
 .searchInput:focus{
     outline: none;
 
-}
+} */
 .topbarRight {
     flex: 4;
     display: flex;
