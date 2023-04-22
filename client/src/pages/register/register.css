@@ -5,14 +5,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url("https://assemblyvoting.com/wp-content/uploads/Photo_21.jpg");
+    background-image: url("https://akm-img-a-in.tosshub.com/businesstoday/images/story/201910/general_elections_2019_g_660_102219031127.jpg?size=1200:675");
     background-size: cover;
     background-position: center;
     background-blend-mode:overlay;
 }
 
 .registerWrapper{
-    width: 70%;
+    width: 80%;
     height: 70%;
     display: flex;
 
@@ -26,9 +26,10 @@
 .registerLogo{
     user-select: none;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 5rem;
+    font-size: 6.5rem;
     font-weight: 800;
-    background-image: -webkit-linear-gradient(#f89827, #f67629);
+    text-shadow: 5px 0px  #f5911f;
+    background: -webkit-linear-gradient(#e18925, #602500);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

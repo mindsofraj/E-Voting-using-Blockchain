@@ -20,6 +20,7 @@
 .detailTable td{
     padding: .6rem;
     color: #363a3b;
+    letter-spacing: 1px;
 }
 .detailTable>tbody>tr td:first-child{
     color: #366ebb;

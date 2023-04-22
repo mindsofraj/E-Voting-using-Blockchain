@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import About from "./pages/about/About";
-import Candidates from "./pages/candidates/candidates";
+import Candidates from "./pages/candidates/Candidates";
 import Home from "./pages/home/Home";
 import Instructions from "./pages/instructions/Instructions";
 import Login from "./pages/login/Login";
@@ -10,29 +10,42 @@ import Register from "./pages/register/Register";
 import Results from "./pages/results/results";
 import VotingArea from "./pages/voting-area/VotingArea";
 import PrivateRoute from "./privateRoute/privateRoute";
+// Web3
 import Web3 from "web3";
-import { ABI, contract_addr } from "./contractDetails";
+import detectEthereumProvider from "@metamask/detect-provider";
+import Voting from "../src/contracts/Voting.json";
 
 function App() {
+  const [state, setState] = useState({
+    web3: null,
+    contract: null,
+  });
+
+  // Initialize Web3 and Connect to Smart Contract
   useEffect(() => {
-    // connect();
-  }, []);
+    const provider = new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545");
 
-  async function connect() {
-    try {
-      const provider = new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545");
-      const web3 = new Web3(provider);
-      const contract = new web3.eth.Contract(ABI, contract_addr);
-      // await contract.methods
-      //   .addCandidate("Satish")
-      //   .send({ from: "0x86754ef724Df1e27A2bA2F94C20cEf363405A556" });
+    const loadProvider = async () => {
+      if (provider) {
+        const web3 = new Web3(provider);
+        const networkId = await web3.eth.net.getId();
+        const deployedNetwork = Voting.networks[networkId];
+        // Create Contract Instance
+        const contract = new web3.eth.Contract(
+          Voting.abi,
+          deployedNetwork.address
+        );
+        setState({
+          web3: web3,
+          contract: contract,
+        });
+      } else {
+        console.error("Please Install Metamask", err);
+      }
+    };
 
-      // const getCandidate = await contract.methods.getCandidate(1).call();
-      // console.log(getCandidate);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+    provider && loadProvider();
+  }, [state]);
 
   return (
     <>
@@ -91,7 +104,7 @@ function App() {
           path="/candidates"
           element={
             <PrivateRoute>
-              <Candidates />
+              <Candidates state={state} />
             </PrivateRoute>
           }
         />
