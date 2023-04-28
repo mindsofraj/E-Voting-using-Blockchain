@@ -56,8 +56,11 @@
     padding: 11px;
     background-color: #6dc2e9;
     border-radius: 0 0 .4rem 0;
+    font-weight: 700;
+    font-size: 1.1rem;
 }
 .cardImg > img {
+    user-select: none;
     display: block;
     width: 100%;
     object-fit: contain;
@@ -76,6 +79,8 @@
 }
 .cardDetails > p {
     text-transform: uppercase;
+    overflow: hidden;
+
 }
 .cardButton {
     padding: .5rem;
@@ -83,4 +88,13 @@
 
 .candidateCard:hover > .cardImg > img {
     transform: scale(1.3);
+}
+.voted{
+    text-align: center;
+    margin-top: 5rem;
+    color:rgba(0, 00, 0, .2);
+}
+.voted h1{
+    font-size: 4rem;
+    margin-bottom: 1rem;
 }

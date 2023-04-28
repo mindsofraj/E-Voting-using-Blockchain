@@ -62,6 +62,9 @@ input::placeholder{
     color: #3c1806ae;
 }
 .loginButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 3rem;
     border-radius: 10px;
     border: none;

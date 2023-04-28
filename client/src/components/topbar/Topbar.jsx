@@ -33,7 +33,7 @@ export default function Topbar() {
           />
         </div> */}
         <div className="welcomMsg">
-          <p>Welcom to N-Vaaku, {currentUser.name}</p>
+          <p>Welcome to N-Vaaku, {currentUser.name}</p>
         </div>
       </div>
       <div className="topbarRight">

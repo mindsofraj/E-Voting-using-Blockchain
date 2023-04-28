@@ -1,7 +1,6 @@
 .candidatesContainer{
     display: flex;
     width: 100%;
-    
 }
 .candidates{
     flex:10;
@@ -29,7 +28,7 @@
     color:#366ebb;
     border-radius: .6rem;
 }
-.adminDetails {
+.adminDetails, .voterAddress {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,15 +45,19 @@
     width: 100%;
     
 }
+.candidatesList {
+    display: flex;
+    flex-direction: column;
+}
 .candidateList{
-    border-collapse:separate;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 1rem;
-    color: #3b3c40;
+    color: #3c3e45;
     width: 100%;
-    border: 1px solid rgb(59, 59, 59);
     margin-top: 1rem;
-    border-radius:7px;
+    border-collapse: collapse;
+    border-radius: 6px;
+    overflow: hidden;
 }
 .listHead{
     font-weight: 500;
@@ -66,20 +69,24 @@
 }
 .candidateList td{
     letter-spacing: 1px;
-    border-left:solid rgb(59, 59, 59) 1px;
-    border-top:solid rgb(59, 59, 59) 1px;
-    padding: .4rem 0;
+    border: 1px solid rgb(255, 255, 255);
+    padding: .6rem 0;
     text-align: center;
+
+}.candidateList tr{
+    background-color: aliceblue;
+
 }
-.candidateList td:first-child, th:first-child {
-     border-left: none;
-}
+
 .candidateList tr:hover{
     background-color: rgb(109, 186, 233);
     color: aliceblue;
     border: 1px solid #366ebb;
-    font-weight: 600;
 }
+/* 
+.candidateList tr:hover #remove {
+    background-color:#eb4937f8;
+} */
 
 .candidatesList{
     padding-bottom: 3rem;
@@ -136,5 +143,15 @@
     color: #4a4d4e;
 }
 
-
-
+/* #remove {
+    background-color: #6dc2e9;
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    font-size: .95rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: .4rem .8rem;
+    cursor: pointer;
+} */

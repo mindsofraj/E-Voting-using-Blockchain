@@ -3,10 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import Axios from "axios";
 import { AuthContext } from "../../context/authContext";
+import Spinner from "../../components/spinner/Spinner";
 
 export default function Login() {
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
+
+  const [loading, setLoading] = useState(false);
 
   const [inputs, setInputs] = useState({
     email: "",
@@ -22,12 +25,15 @@ export default function Login() {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
   const loginVoter = (e) => {
+    setLoading(true);
     e.preventDefault();
     Axios.post("http://localhost:3000/login", inputs).then((res) => {
       if (res.data.status === 401) {
         setLoginStatus(res.data.message);
+        setLoading(false);
       } else {
         login(res.data);
+        setLoading(false);
         navigate("/");
       }
     });
@@ -62,7 +68,7 @@ export default function Login() {
               required
             />
             <button type="submit" className="loginButton">
-              Login
+              {!loading ? "Login" : <Spinner />}
             </button>
             <Link to="/register">
               <button className="loginRegisterButton link">

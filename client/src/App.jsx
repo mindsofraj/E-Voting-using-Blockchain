@@ -7,7 +7,7 @@ import Instructions from "./pages/instructions/Instructions";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
-import Results from "./pages/results/results";
+import Results from "./pages/results/Results";
 import VotingArea from "./pages/voting-area/VotingArea";
 import PrivateRoute from "./privateRoute/privateRoute";
 // Web3
@@ -80,7 +80,7 @@ function App() {
           path="/voting-area"
           element={
             <PrivateRoute>
-              <VotingArea />
+              <VotingArea state={state} />
             </PrivateRoute>
           }
         />
@@ -96,7 +96,7 @@ function App() {
           path="/results"
           element={
             <PrivateRoute>
-              <Results />
+              <Results state={state} />
             </PrivateRoute>
           }
         />

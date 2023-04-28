@@ -3,20 +3,25 @@
     color: aliceblue;
     font-weight: 500;
     font-size: 1rem;
-    background-color: #366ebb;
+    background-image: linear-gradient(to right, #366ebb 50%, #6dc2e9 50%);
+    background-size: 200%;
     user-select: none;
     padding:.9rem 14px;
     border-radius: .4rem;
     letter-spacing: .05rem;
-    cursor: pointer;
     border: none;
+    cursor: pointer;
     outline: none;
     box-shadow: 0 1px 2px .5px rgba(2, 2, 26, 0.253);
-
+    transition: all 200ms ease;
 }
+
 #btn:hover{
     font-weight: 600;
-    background-color: #6dc2e9;
+    /* background-color: #6dc2e9; */
+    background-position: right;
+    background-size: 210%;
+    overflow: hidden;
     color: rgb(241, 245, 246);
     box-shadow: 0px 4px 5px 0px rgba(47, 154, 183, 0.477);
 

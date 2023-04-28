@@ -41,8 +41,8 @@ app.post("/register", (req, res) => {
         }else {
             bcrypt.hash(password, saltRounds, (err, hash) => {
                 if (err) console.log(err)
-                db.query('INSERT INTO voters (name, email, password, mobile, aadhaar) VALUES (?,?,?,?,?)',
-                [name, email, hash, mobile, aadhaar],
+                db.query('INSERT INTO voters (name, email, password, mobile, aadhaar, voted) VALUES (?,?,?,?,?,?)',
+                [name, email, hash, mobile, aadhaar, 0],
                 (err, result) => {
                     if (err) {
                         console.log(err)

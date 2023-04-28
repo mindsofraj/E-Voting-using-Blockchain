@@ -2,7 +2,12 @@ import "./candidates.css";
 import Topbar from "../../components/topbar/Topbar";
 import Sidebar from "../../components/sidebar/sidebar";
 import Button from "../../components/button/Button";
-import { useEffect, useState } from "react";
+import { Delete } from "@mui/icons-material";
+import { IconButton, Stack, Tooltip } from "@mui/material";
+import { useContext, useEffect, useState } from "react";
+import { CandidateContext } from "../../context/candidateContext";
+import { motion } from "framer-motion";
+import Spinner2 from "../../components/spinner2/Spinner2";
 
 export default function Candidates({ state }) {
   const [toggleAddCandidate, setToggleAddCandidate] = useState(false);
@@ -10,9 +15,14 @@ export default function Candidates({ state }) {
   const [owner, setOwner] = useState("");
   const [candidateName, setCandidateName] = useState("");
   const [dept, setDept] = useState("");
-  const [candidatesList, setCandidatesList] = useState([]);
+  const [shake, setShake] = useState(false);
+  // const [candidatesList, setCandidatesList] = useState([]);
   const [candidateAdded, setCandidateAdded] = useState(false);
   const [msg, setMsg] = useState(null);
+
+  // Fetching from Context
+  const { getCandidate, candidatesList, setCandidatesList, loading } =
+    useContext(CandidateContext);
 
   // Communicating with contracts
   const { contract } = state;
@@ -37,38 +47,41 @@ export default function Candidates({ state }) {
         setMsg(null);
       } else {
         setMsg("Invalid Admin Address");
+        setShake(!shake);
+        setAdminAddress("");
       }
     }
+    setShake(!shake);
   };
 
+  // Get Candidates
   useEffect(() => {
-    contract && getCandidate();
+    contract && getCandidate(contract);
     return () => {
       setCandidatesList([]);
-
       setTimeout(() => {
         setMsg("");
       }, 6000);
     };
   }, [candidateAdded]);
 
-  // Get Candidate
-  const getCandidate = async () => {
-    const candidateNum = await contract.methods.getNumOfCandidates().call();
-    // console.log("candidateNum", candidateNum);
-    for (let i = 0; i <= candidateNum; i++) {
-      const candidate = await contract.methods.getCandidate(i).call();
-      if (candidate[0] && candidate[1] && candidate[2]) {
-        // console.log(candidate[0], candidate[1], candidate[2]);
-        let candDetail = {
-          id: candidate[0],
-          name: candidate[1],
-          dept: candidate[2],
-        };
-        setCandidatesList((prev) => [...prev, candDetail]);
-      }
-    }
-  };
+  // // Get Candidate
+  // const getCandidate = async () => {
+  //   const candidateNum = await contract.methods.getNumOfCandidates().call();
+  //   // console.log("candidateNum", candidateNum);
+  //   for (let i = 0; i <= candidateNum; i++) {
+  //     const candidate = await contract.methods.getCandidate(i).call();
+  //     if (candidate[0] && candidate[1] && candidate[2]) {
+  //       // console.log(candidate[0], candidate[1], candidate[2]);
+  //       let candDetail = {
+  //         id: candidate[0],
+  //         name: candidate[1],
+  //         dept: candidate[2],
+  //       };
+  //       setCandidatesList((prev) => [...prev, candDetail]);
+  //     }
+  //   }
+  // };
 
   // Add Candidate
   const addCandidate = async (e) => {
@@ -88,10 +101,20 @@ export default function Candidates({ state }) {
       setCandidateAdded(!candidateAdded);
       setCandidateName("");
     } else {
+      setShake(!shake);
       setMsg("Please fill the candidate details!");
     }
   };
 
+  // Remove Candidate
+  const removeCandidate = async () => {
+    await contract.methods.removeCandidate().send({
+      from: owner,
+      gas: 5000000,
+    });
+
+    setCandidateAdded(!candidateAdded);
+  };
   return (
     <div>
       <Topbar />
@@ -101,7 +124,14 @@ export default function Candidates({ state }) {
           <div className="candidatesWrapper">
             <h1 className="title">Candidates</h1>
             {!toggleAddCandidate && (
-              <div className="adminDetails">
+              <motion.div
+                initial={{ x: 0 }}
+                animate={{
+                  x: shake ? [10, -10, 0] : [-10, 10, 0],
+                }}
+                transition={{ type: "spring", bounce: 3 }}
+                className="adminDetails"
+              >
                 <div className="inputBox">
                   <input
                     type="text"
@@ -117,7 +147,7 @@ export default function Candidates({ state }) {
                 <div className="buttonBox" onClick={authenticateAdmin}>
                   <Button value={"Authenticate Admin"} />
                 </div>
-              </div>
+              </motion.div>
             )}
             <div className="candidateBox">
               {/* Candidate Details shown if (Owner is Verified) */}
@@ -126,7 +156,12 @@ export default function Candidates({ state }) {
                   <h4 className="smallTitle" style={{ marginTop: "1rem" }}>
                     Add Candidates
                   </h4>
-                  <div
+                  <motion.div
+                    initial={{ x: 0 }}
+                    animate={{
+                      x: shake ? [10, -10, 0] : [-10, 10, 0],
+                    }}
+                    transition={{ type: "spring", bounce: 3 }}
                     style={{
                       display: "flex",
                       gap: "1rem",
@@ -178,34 +213,87 @@ export default function Candidates({ state }) {
                     >
                       <Button value={"Add"} />
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               )}
               <div className="msg">{msg}</div>
               {/* Candidates List */}
               <div className="candidatesList">
-                {candidatesList.length !== 0 && (
+                <h4 className="smallTitle">
+                  Candidates List
+                  {!loading
+                    ? candidatesList.length !== 0 && (
+                        <Tooltip
+                          title={
+                            <p style={{ fontSize: ".9rem" }}>
+                              Remove All Candidates
+                            </p>
+                          }
+                          placement="right"
+                        >
+                          <IconButton
+                            sx={{ marginBottom: "3.7px", marginLeft: "5px" }}
+                            onClick={() => removeCandidate()}
+                            aria-label="delete"
+                            size="small"
+                          >
+                            <Delete
+                              sx={{
+                                color: "#366ebb",
+                                fontSize: "24px",
+                                "&:hover": { color: "#ef2f1af8" },
+                              }}
+                            />
+                          </IconButton>
+                        </Tooltip>
+                      )
+                    : " Loading..."}
+                </h4>
+
+                <div
+                  style={{
+                    display: loading ? "block" : "none",
+                    textAlign: "center",
+                    marginTop: "6%",
+                  }}
+                >
+                  {loading && <Spinner2 />}
+                </div>
+
+                {!loading && candidatesList.length !== 0 ? (
                   <>
-                    <h4 className="smallTitle">Candidates List</h4>
                     <table className="candidateList">
                       <thead>
                         <tr className="listHead">
+                          <th>S.No.</th>
                           <th>Candidate Code</th>
                           <th>Candidate Name</th>
                           <th>Department</th>
+                          {/* <th>Actions</th> */}
                         </tr>
                       </thead>
                       <tbody>
-                        {candidatesList.map((candidate) => (
-                          <tr key={candidate.id}>
+                        {candidatesList.map((candidate, index) => (
+                          <tr key={index}>
+                            <td>{++index}</td>
                             <td>{candidate.id}</td>
                             <td>{candidate.name.toUpperCase()}</td>
                             <td>{candidate.dept.toUpperCase()}</td>
+                            {/* <td>
+                              <button
+                                id="remove"
+                                onClick={() => removeCandidate(candidate.id)}
+                              >
+                                Remove
+                              </button>
+                            </td> */}
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   </>
+                ) : (
+                  !loading && <h1 className="voted">No Candidates Found</h1>
                 )}
               </div>
             </div>

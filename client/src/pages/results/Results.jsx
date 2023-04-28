@@ -1,17 +1,31 @@
 import "./results.css";
-import { useState } from "react";
-import { userData } from "../../dummyData";
 import PieChart from "../../components/piechart/piechart";
 import Topbar from "../../components/topbar/Topbar";
 import Sidebar from "../../components/sidebar/sidebar";
+import { useContext, useEffect, useState } from "react";
+import { CandidateContext } from "../../context/candidateContext";
+import { AuthContext } from "../../context/authContext";
 
-export default function Results() {
+export default function Results({ state }) {
+  const { currentUser } = useContext(AuthContext);
+  const { getCandidate, candidatesList, setCandidatesList } =
+    useContext(CandidateContext);
+  const { contract } = state;
+
+  // Get Canididates
+  useEffect(() => {
+    contract && getCandidate(contract);
+    return () => {
+      setCandidatesList([]);
+    };
+  }, []);
+
   const [chartData, setChartData] = useState({
-    labels: userData.map((data) => data.candidateName),
+    labels: candidatesList.map((data) => data.name),
     datasets: [
       {
         label: " Vote-Count",
-        data: userData.map((data) => data.voteCount),
+        data: candidatesList.map((data) => data.voteCount),
       },
     ],
   });
@@ -23,27 +37,35 @@ export default function Results() {
         <Sidebar />
         <div className="results">
           <div className="resultsWrapper">
-            <h1 className="title">About N-Vaaku</h1>
+            <h1 className="title">Results</h1>
             <div className="resultsSection">
-              <div className="chart">
-                <PieChart chartData={chartData} />
-              </div>
-              <table className="resultTable">
-                <thead>
-                  <tr>
-                    <th>Party</th>
-                    <th>Vote Count</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {userData.map((user) => (
-                    <tr key={user.id}>
-                      <td>{user.candidateName}</td>
-                      <td>{user.voteCount}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              {candidatesList.length !== 0 && (
+                <>
+                  <table className="resultTable">
+                    <thead>
+                      <tr className="listHead">
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Dept</th>
+                        <th>Vote Count</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {candidatesList.map((candidate, index) => (
+                        <tr key={index}>
+                          <td>{candidate.id}</td>
+                          <td>{candidate.name.toUpperCase()}</td>
+                          <td>{candidate.dept.toUpperCase()}</td>
+                          <td>{candidate.voteCount.toUpperCase()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <div className="chart">
+                    <PieChart chartData={chartData} />
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

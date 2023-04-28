@@ -2,6 +2,7 @@ import "./register.css";
 import Axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Spinner from "../../components/spinner/Spinner";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -12,11 +13,13 @@ export default function Register() {
   const [registerStatus, setRegisterStatus] = useState(
     "Fill your details as on Aadhaar Card"
   );
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const registerVoter = (e) => {
     e.preventDefault();
+    setLoading(true);
     Axios.post("http://localhost:3000/register", {
       name: name,
       email: email,
@@ -26,8 +29,10 @@ export default function Register() {
     }).then((res) => {
       if (res.data.status === 409) {
         setRegisterStatus(res.data.message);
+        setLoading(false);
       } else {
         navigate("/login");
+        setLoading(false);
       }
     });
   };
@@ -113,7 +118,7 @@ export default function Register() {
               required
             />
             <button type="submit" className="registerButton">
-              Signup
+              {!loading ? "Signup" : <Spinner />}
             </button>
             <Link to="/login">
               <button type="submit" className="alreadyRegisterButton loginLink">
