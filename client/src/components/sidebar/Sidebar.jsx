@@ -10,9 +10,10 @@ import {
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
+import Spinner from "../../components/spinner/Spinner";
 
 export default function Sidebar() {
-  const { logout } = useContext(AuthContext);
+  const { logout, loading } = useContext(AuthContext);
   const { currentUser } = useContext(AuthContext);
 
   return (
@@ -45,9 +46,19 @@ export default function Sidebar() {
           </Link>
           <hr />
           {currentUser && (
-            <li onClick={logout} className="sidebarListItem" id="lastItem">
-              <Logout />
-              <span className="sidebarListItemText">Logout</span>
+            <li
+              onClick={logout}
+              className="sidebarListItem"
+              id={!loading ? "lastItem" : "lastItemWithCenter"}
+            >
+              {!loading ? (
+                <>
+                  <Logout />
+                  <span className="sidebarListItemText">Logout</span>
+                </>
+              ) : (
+                <Spinner />
+              )}
             </li>
           )}
         </ul>

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
+  const [loading, setLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("voter") || null)
   );
@@ -14,10 +15,12 @@ export const AuthContextProvider = ({ children }) => {
     setCurrentUser(data);
   };
   const logout = async () => {
+    setLoading(true);
     await Axios.post("http://localhost:3000/logout");
     localStorage.clear();
     setCurrentUser(null);
     navigate("/login");
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -25,7 +28,7 @@ export const AuthContextProvider = ({ children }) => {
   }, [currentUser]);
 
   return (
-    <AuthContext.Provider value={{ currentUser, login, logout }}>
+    <AuthContext.Provider value={{ currentUser, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );

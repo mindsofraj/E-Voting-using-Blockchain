@@ -91,6 +91,7 @@ app.post("/logout", (req, res) => {
     }).status(200).json("User has been logged out.")
 })
 
+
 app.listen(3000, () => {
     console.log("Server listening on port 3000!")
 })

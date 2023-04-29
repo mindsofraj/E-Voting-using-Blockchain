@@ -25,6 +25,8 @@ contract Voting {
         bool doesExist;
     }
 
+
+
     uint numCandidates;
     uint numVoters;
     uint[] public aadhaarList;
@@ -44,8 +46,14 @@ contract Voting {
     // Remove Candidate
     function removeCandidate() public onlyOwner {
         for (uint i = 0; i <= numCandidates; i++) {
-            candidates[i] = Candidate("", "", false);
+            delete candidates[i];
         }
+        for (uint i = 0; i < numVoters; i++) {
+            delete voters[aadhaarList[i]];
+        }
+        numVoters = 0;
+        numCandidates = 0;
+        delete aadhaarList;
     }
 
     // Voter for Candidates
@@ -57,6 +65,11 @@ contract Voting {
                 voters[_aadhaarID] = Voter(_candidateID, true);
             }
         }
+    }
+
+    // Check if voter has voted or not
+    function checkIfVoted(uint _aadhaarID) public view  returns (bool)  {
+        return voters[_aadhaarID].voted;
     }
 
     // Get Candidates

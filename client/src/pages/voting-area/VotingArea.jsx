@@ -7,8 +7,10 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { motion } from "framer-motion";
 import Spinner2 from "../../components/spinner2/Spinner2";
+import { useNavigate } from "react-router-dom";
 
 export default function VotingArea({ state }) {
+  const navigate = useNavigate();
   const [voterAddress, setVoterAddress] = useState("");
   const [toggle, setToggle] = useState(false);
   const [accounts, setAccounts] = useState([]);
@@ -29,6 +31,17 @@ export default function VotingArea({ state }) {
     };
     getAccounts();
   }, []);
+
+  // Check if Voter has voted or not
+  useEffect(() => {
+    const checkIfVoted = async () => {
+      const voted = await contract.methods
+        .checkIfVoted(currentUser.aadhaar)
+        .call();
+      setVoted(voted);
+    };
+    contract && checkIfVoted();
+  }, [contract]);
 
   // Get Canididates
   useEffect(() => {
@@ -55,6 +68,7 @@ export default function VotingArea({ state }) {
       gas: 5000000,
     });
     setVoted(true);
+    navigate("/");
   };
 
   return (
@@ -93,6 +107,7 @@ export default function VotingArea({ state }) {
                     </div>
                   </motion.div>
                 )}
+                {/* Showing Spinner While Loading */}
                 <div
                   style={{
                     display: loading ? "block" : "none",
@@ -146,9 +161,20 @@ export default function VotingArea({ state }) {
                       )}
                 </div>
               </>
-            ) : (
+            ) : !loading ? (
               <div className="voted">
+                <p>You have already Voted!</p>
                 <h1>THANKS FOR VOTING!</h1>
+              </div>
+            ) : (
+              <div
+                style={{
+                  display: loading ? "block" : "none",
+                  textAlign: "center",
+                  marginTop: "6%",
+                }}
+              >
+                <Spinner2 />
               </div>
             )}
           </div>

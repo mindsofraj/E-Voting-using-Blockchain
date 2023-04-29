@@ -5,10 +5,11 @@ import Sidebar from "../../components/sidebar/sidebar";
 import { useContext, useEffect, useState } from "react";
 import { CandidateContext } from "../../context/candidateContext";
 import { AuthContext } from "../../context/authContext";
+import Spinner2 from "../../components/spinner2/Spinner2";
 
 export default function Results({ state }) {
   const { currentUser } = useContext(AuthContext);
-  const { getCandidate, candidatesList, setCandidatesList } =
+  const { getCandidate, candidatesList, setCandidatesList, loading } =
     useContext(CandidateContext);
   const { contract } = state;
 
@@ -39,7 +40,17 @@ export default function Results({ state }) {
           <div className="resultsWrapper">
             <h1 className="title">Results</h1>
             <div className="resultsSection">
-              {candidatesList.length !== 0 && (
+              {/* Showing Spinner While Loading */}
+              <div
+                style={{
+                  display: loading ? "block" : "none",
+                  textAlign: "center",
+                  marginTop: "6%",
+                }}
+              >
+                {loading && <Spinner2 />}
+              </div>
+              {!loading && candidatesList.length !== 0 ? (
                 <>
                   <table className="resultTable">
                     <thead>
@@ -65,6 +76,10 @@ export default function Results({ state }) {
                     <PieChart chartData={chartData} />
                   </div>
                 </>
+              ) : (
+                !loading && (
+                  <h1 className="voted">Voting haven't started yet!</h1>
+                )
               )}
             </div>
           </div>

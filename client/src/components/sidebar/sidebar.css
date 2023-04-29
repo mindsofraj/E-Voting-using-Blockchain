@@ -34,6 +34,21 @@ hr{
 }
 
 #lastItem{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 3.3rem;
+    width:100%;
+    margin-top: 1.4rem;
+    margin-bottom: 0;
+    color: whitesmoke;
+    background-color: #366ebb;
+}
+#lastItemWithCenter{
+    display: flex;
+    justify-content: center;
+    height: 3.3rem;
+    width:100%;
     margin-top: 1.4rem;
     margin-bottom: 0;
     color: whitesmoke;
