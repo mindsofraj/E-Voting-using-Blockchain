@@ -226,7 +226,7 @@ export default function Candidates({ state }) {
                         <Tooltip
                           title={
                             <p style={{ fontSize: ".9rem" }}>
-                              Remove All Candidates
+                              Remove All Candidates & Restart Voting
                             </p>
                           }
                           placement="right"

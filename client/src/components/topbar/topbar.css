@@ -42,7 +42,10 @@ a{
     color: #dfeff3;
 }
 .topbarCenter {
-    flex: 5;
+    flex: 6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .welcomMsg > p {
     color: aliceblue;
@@ -50,6 +53,22 @@ a{
     font-size: 1.1rem;
     letter-spacing: 1px;
     user-select: none;
+}
+.counting{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:aliceblue;
+    font-weight: 600;
+    margin-right: 2rem;
+}
+.counting p {
+    margin-right: 2rem;
+}
+.counting .largeNumber {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-right: .3rem;
 }
 /* .searchBar{
     width: 100%;
@@ -74,22 +93,17 @@ a{
 
 } */
 .topbarRight {
-    flex: 4;
+    flex: 3;
     display: flex;
     align-items: center;
     justify-content:space-around;
     color:white;
-    margin-right: 2rem;
+    margin-right: .6rem;
     font-weight: 500;
     user-select: none;
 }
-.topbarLinks{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+
 .topbarLink{
-    margin-right: 3rem;
     font-size: 16px;
     cursor:pointer;
 } 

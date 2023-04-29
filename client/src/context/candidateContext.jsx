@@ -5,9 +5,11 @@ export const CandidateContext = createContext();
 export const CandidateContextProvider = ({ children }) => {
   const [candidatesList, setCandidatesList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [contract, setContract] = useState(null);
 
   // Get Candidate
   const getCandidate = async (contract) => {
+    setContract(contract);
     setLoading(true);
     const candidateNum = await contract.methods.getNumOfCandidates().call();
     // console.log("candidateNum", candidateNum);
@@ -33,9 +35,29 @@ export const CandidateContextProvider = ({ children }) => {
     setLoading(false);
   };
 
+  // Get Total Number of Candidates
+  const numOfCandidates = async (contract) => {
+    const candidateNum = await contract.methods.getNumOfCandidates().call();
+    return candidateNum;
+  };
+
+  // Get Total Number of Voters
+  const numOfVoters = async (contract) => {
+    const voterNum = await contract.methods.getNumOfVoters().call();
+    return voterNum;
+  };
+
   return (
     <CandidateContext.Provider
-      value={{ getCandidate, candidatesList, setCandidatesList, loading }}
+      value={{
+        getCandidate,
+        candidatesList,
+        setCandidatesList,
+        loading,
+        numOfCandidates,
+        numOfVoters,
+        contract,
+      }}
     >
       {children}
     </CandidateContext.Provider>

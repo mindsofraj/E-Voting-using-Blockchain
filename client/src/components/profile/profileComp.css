@@ -1,5 +1,4 @@
 .profileCompContainer{
-
     width: 100%;
     min-height: 20vh;
     margin: 1rem;
@@ -21,6 +20,10 @@
     padding: .6rem;
     color: #363a3b;
     letter-spacing: 1px;
+}
+.detailTable td:nth-child(2) {
+    user-select:text;
+
 }
 .detailTable>tbody>tr td:first-child{
     color: #366ebb;

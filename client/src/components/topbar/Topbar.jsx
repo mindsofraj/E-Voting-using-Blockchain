@@ -8,11 +8,28 @@ import {
   Logout,
 } from "@mui/icons-material";
 import { Tooltip } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/authContext";
+import { CandidateContext } from "../../context/candidateContext";
+import CountUp from "react-countup";
 
 export default function Topbar() {
+  const [candidatesCount, setCandidatesCount] = useState(0);
+  const [votersCount, setVotersCount] = useState(0);
+  // Context
   const { currentUser } = useContext(AuthContext);
+  const { numOfCandidates, numOfVoters, contract } =
+    useContext(CandidateContext);
+
+  useEffect(() => {
+    const getCount = async () => {
+      const voters = await numOfVoters(contract);
+      const cand = await numOfCandidates(contract);
+      setVotersCount(voters);
+      setCandidatesCount(cand);
+    };
+    contract && getCount();
+  }, [contract]);
 
   return (
     <div className="topbarContainer">
@@ -35,12 +52,25 @@ export default function Topbar() {
         <div className="welcomMsg">
           <p>Welcome to N-Vaaku, {currentUser.name}</p>
         </div>
+        <div className="counting">
+          <CountUp
+            className="largeNumber"
+            end={candidatesCount}
+            duration={2}
+            useEasing={true}
+          />
+          <p>CANDIDATES</p>
+          <CountUp
+            className="largeNumber"
+            end={votersCount}
+            duration={2}
+            useEasing={true}
+          />
+          <p>VOTERS</p>
+        </div>
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">
-          <Link to="/">
-            <span className="topbarLink link">Home</span>
-          </Link>
           <Link to="/about">
             <span className="topbarLink link">About Us</span>
           </Link>

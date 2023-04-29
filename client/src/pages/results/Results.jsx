@@ -78,7 +78,7 @@ export default function Results({ state }) {
                 </>
               ) : (
                 !loading && (
-                  <h1 className="voted">Voting haven't started yet!</h1>
+                  <h1 className="voted">Voting haven't yet started!</h1>
                 )
               )}
             </div>
