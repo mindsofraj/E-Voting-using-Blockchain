@@ -59,7 +59,7 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<Register state={state} />} />
         <Route
           path="/about"
           element={

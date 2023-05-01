@@ -16,48 +16,55 @@
 }
 .resultsSection {
     display: flex;
+    gap: 1rem;
     justify-content: center;
     padding: 1rem 0 1rem;
 
 }
-.chart{
-    width: 50%;
-    min-height: 400px;
-    justify-content: center;
+.rightSection{
+    flex: 4;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-}
-/* .resultTable{
-    font-size: 1.3rem;
-    border-collapse: collapse;
-    text-align: left;
-    height: 100% ;
-    margin: auto 0 auto 5rem;
-}
-
-.resultTable td, th{
-    padding: .7rem;
-
-}
-.resultTable td{
-    color: rgb(28, 28, 28);   
-}
-.resultTable td:last-child{
+    flex-direction: column;
+    width: 50%;
     text-align: center;
-} */
+    background-color: #fff3eb;
+    border-radius: 6px;
+    padding-bottom: .4rem;
+    overflow: hidden;
+    
+}
+.rightSection .resultText{
+    background-image: linear-gradient(#f89827, #f67629) ;
+    color:#f9f9f9;
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    padding: .7rem 0;
+}
+.rightSection .chart {
+    min-height: 200px;
+}
 
 /* Table */
 
-.resultTable{
+.resultTable, .rankTable{
+    flex: 8;
     border-collapse:collapse;
     border-radius: 6px;
     overflow: hidden;
     font-weight: 600;
     font-size: 1rem;
     color: #3c3e45;
-
     width: 100%;
 }
-.listHead{
+.rankTable {
+    color: #6b2c04;
+    margin-top: 1rem;
+}
+.listHead, .rankHead{
     font-weight: 500;
     font-size: 1.1rem;
 }
@@ -66,7 +73,12 @@
     color: aliceblue;
     padding: 1rem;
 }
-.resultTable td{
+.rankHead th {
+    padding: .8rem;
+    background-color: #f67629;
+    color: #fff3eb;
+}
+.resultTable, .rankTable td{
     letter-spacing: 1px;
     padding: .4rem 0;
     text-align: center;
@@ -75,10 +87,35 @@
 }
 .resultTable tr{
     background-color: aliceblue;
+}
+.rankTable td{
+    padding: 1rem 0;
+    border: none;
 
 }
 
 .resultTable tr:hover{
     background-color: rgb(109, 186, 233);
     color: aliceblue;
+}
+.rankTable tr:hover {
+    background-color: #ffb98e;
+}
+
+.toggle {
+    background-color: #f67629;
+    outline: none;
+    border: none;
+    color: #ffcd94;
+    margin-bottom: .8rem;
+    border-radius: 0 0 4px 4px;
+    font-weight: 600;
+    padding: .1rem .9rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all .3s ease;
+    letter-spacing: 1px;
+}
+.toggle:hover{
+    color: #f9f7e1;
 }

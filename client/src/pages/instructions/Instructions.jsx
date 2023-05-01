@@ -21,8 +21,13 @@ const Information = () => {
               In Dashboard, Go to the <b>Voting Area</b>.
             </li>
             <li>
-              There you can see all the candidates lists, vote for your
-              favourite candidate by clicking on <b>VOTE</b> button.
+              There you can see all the candidates lists and to vote for your
+              favourite candidate enter your ethereum account address
+              <em>(sent to your registered mail id)</em>.
+            </li>
+            <li>
+              After successfully verifying your account, click on <b>VOTE</b>{" "}
+              button.
             </li>
             <li>
               And that's it, easy-peasy! <b>Happy Voting!</b>

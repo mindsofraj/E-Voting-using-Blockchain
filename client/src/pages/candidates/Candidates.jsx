@@ -3,7 +3,7 @@ import Topbar from "../../components/topbar/Topbar";
 import Sidebar from "../../components/sidebar/sidebar";
 import Button from "../../components/button/Button";
 import { Delete } from "@mui/icons-material";
-import { IconButton, Stack, Tooltip } from "@mui/material";
+import { IconButton, Tooltip } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { CandidateContext } from "../../context/candidateContext";
 import { motion } from "framer-motion";
@@ -64,24 +64,6 @@ export default function Candidates({ state }) {
       }, 6000);
     };
   }, [candidateAdded]);
-
-  // // Get Candidate
-  // const getCandidate = async () => {
-  //   const candidateNum = await contract.methods.getNumOfCandidates().call();
-  //   // console.log("candidateNum", candidateNum);
-  //   for (let i = 0; i <= candidateNum; i++) {
-  //     const candidate = await contract.methods.getCandidate(i).call();
-  //     if (candidate[0] && candidate[1] && candidate[2]) {
-  //       // console.log(candidate[0], candidate[1], candidate[2]);
-  //       let candDetail = {
-  //         id: candidate[0],
-  //         name: candidate[1],
-  //         dept: candidate[2],
-  //       };
-  //       setCandidatesList((prev) => [...prev, candDetail]);
-  //     }
-  //   }
-  // };
 
   // Add Candidate
   const addCandidate = async (e) => {
@@ -222,31 +204,36 @@ export default function Candidates({ state }) {
                 <h4 className="smallTitle">
                   Candidates List
                   {!loading
-                    ? candidatesList.length !== 0 && (
-                        <Tooltip
-                          title={
-                            <p style={{ fontSize: ".9rem" }}>
-                              Remove All Candidates & Restart Voting
-                            </p>
-                          }
-                          placement="right"
-                        >
-                          <IconButton
-                            sx={{ marginBottom: "3.7px", marginLeft: "5px" }}
-                            onClick={() => removeCandidate()}
-                            aria-label="delete"
-                            size="small"
+                    ? toggleAddCandidate && !loading
+                      ? candidatesList.length !== 0 && (
+                          <Tooltip
+                            title={
+                              <p style={{ fontSize: ".9rem" }}>
+                                Remove All Candidates & Restart Voting
+                              </p>
+                            }
+                            placement="right"
                           >
-                            <Delete
+                            <IconButton
                               sx={{
-                                color: "#366ebb",
-                                fontSize: "24px",
-                                "&:hover": { color: "#ef2f1af8" },
+                                marginBottom: "3.7px",
+                                marginLeft: "5px",
                               }}
-                            />
-                          </IconButton>
-                        </Tooltip>
-                      )
+                              onClick={() => removeCandidate()}
+                              aria-label="delete"
+                              size="small"
+                            >
+                              <Delete
+                                sx={{
+                                  color: "#366ebb",
+                                  fontSize: "24px",
+                                  "&:hover": { color: "#ef2f1af8" },
+                                }}
+                              />
+                            </IconButton>
+                          </Tooltip>
+                        )
+                      : " "
                     : " Loading..."}
                 </h4>
 

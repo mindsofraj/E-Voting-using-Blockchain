@@ -59,14 +59,14 @@ export default function Topbar() {
             duration={2}
             useEasing={true}
           />
-          <p>CANDIDATES</p>
+          <p>{candidatesCount === "1" ? "CANDIDATE" : "CANDIDATES"}</p>
           <CountUp
             className="largeNumber"
             end={votersCount}
             duration={2}
             useEasing={true}
           />
-          <p>VOTERS</p>
+          <p>{votersCount === "1" ? "VOTER" : "VOTERS"}</p>
         </div>
       </div>
       <div className="topbarRight">

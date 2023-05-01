@@ -55,6 +55,7 @@ a{
     user-select: none;
 }
 .counting{
+    user-select: none;
     display: flex;
     justify-content: space-between;
     align-items: center;

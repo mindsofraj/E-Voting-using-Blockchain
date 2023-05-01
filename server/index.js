@@ -31,6 +31,7 @@ app.post("/register", (req, res) => {
     const password = req.body.password
     const mobile = req.body.mobile
     const aadhaar = req.body.aadhaar
+    const address = req.body.address
  
 
     // Check if user already Exists
@@ -41,8 +42,8 @@ app.post("/register", (req, res) => {
         }else {
             bcrypt.hash(password, saltRounds, (err, hash) => {
                 if (err) console.log(err)
-                db.query('INSERT INTO voters (name, email, password, mobile, aadhaar, voted) VALUES (?,?,?,?,?,?)',
-                [name, email, hash, mobile, aadhaar, 0],
+                db.query('INSERT INTO voters (name, email, password, mobile, aadhaar, address) VALUES (?,?,?,?,?,?)',
+                [name, email, hash, mobile, aadhaar, address],
                 (err, result) => {
                     if (err) {
                         console.log(err)

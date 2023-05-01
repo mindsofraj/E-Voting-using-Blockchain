@@ -50,17 +50,6 @@ export default function VotingArea({ state }) {
       setCandidatesList([]);
     };
   }, []);
-
-  // Verify Voter
-  const verifyVoter = () => {
-    accounts.forEach((acc) => {
-      if (voterAddress === acc) {
-        setToggle(true);
-      } else {
-        setShake(!shake);
-      }
-    });
-  };
   // Do Vote
   const doVote = async (id, name, dept) => {
     await contract.methods.doVote(id, currentUser.aadhaar).send({
@@ -102,7 +91,14 @@ export default function VotingArea({ state }) {
                         }}
                       />
                     </div>
-                    <div className="buttonBox" onClick={verifyVoter}>
+                    <div
+                      className="buttonBox"
+                      onClick={() =>
+                        voterAddress === currentUser.address
+                          ? setToggle(true)
+                          : setShake(!shake)
+                      }
+                    >
                       <Button value={"Verify"} />
                     </div>
                   </motion.div>

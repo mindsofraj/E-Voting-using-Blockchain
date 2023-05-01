@@ -1,36 +1,83 @@
 import "./register.css";
 import Axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Spinner from "../../components/spinner/Spinner";
+import emailjs from "@emailjs/browser";
 
-export default function Register() {
+export default function Register({ state }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [aadhaar, setAadhaar] = useState("");
   const [password, setPassword] = useState("");
   const [mobile, setMobile] = useState("");
+  const [address, setAddress] = useState("");
+  const [addressList, setAddressList] = useState([]);
+
   const [registerStatus, setRegisterStatus] = useState(
     "Fill your details as on Aadhaar Card"
   );
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+  const form = useRef();
 
+  // Get Accounts
+  useEffect(() => {
+    const { web3 } = state;
+    const getAccounts = async () => {
+      try {
+        const acc = await web3.eth.getAccounts();
+        acc.shift();
+        setAddressList(acc);
+      } catch (err) {
+        console.log("Cannot Fetch Accounts from Blockchain");
+      }
+    };
+    web3 && getAccounts();
+  }, []);
+
+  useEffect(() => {
+    setAddress(addressList[(Math.random() * addressList.length) | 0]);
+  }, [addressList]);
+
+  // Register Voter
   const registerVoter = (e) => {
     e.preventDefault();
     setLoading(true);
+
+    // Inserting data to database
     Axios.post("http://localhost:3000/register", {
       name: name,
       email: email,
       password: password,
       aadhaar: aadhaar,
       mobile: mobile,
+      address: address,
     }).then((res) => {
       if (res.data.status === 409) {
         setRegisterStatus(res.data.message);
         setLoading(false);
       } else {
+        setLoading(true);
+        // Sending Ethereum Address to Email
+        emailjs
+          .sendForm(
+            "service_0m92y6b",
+            "template_fd1uq23",
+            form.current,
+            "wQdiod7NvEouqTtGz"
+          )
+          .then(
+            (result) => {
+              console.log("Check your email for Ethereum Account Address");
+              setLoading(false);
+              navigate("/login");
+            },
+            (error) => {
+              setRegisterStatus(error.text);
+            }
+          );
         navigate("/login");
         setLoading(false);
       }
@@ -60,11 +107,12 @@ export default function Register() {
           </span>
         </div>
         <div className="registerRight">
-          <form className="registerBox" onSubmit={registerVoter}>
+          <form ref={form} className="registerBox" onSubmit={registerVoter}>
             <span className="registerStatus">{registerStatus}</span>
 
             <input
               type="text"
+              name="user_name"
               placeholder="Name"
               minLength={2}
               onChange={(e) => setName(e.target.value)}
@@ -90,10 +138,12 @@ export default function Register() {
             <input
               type="email"
               placeholder="Email"
+              name="to_email"
               onChange={(e) => setEmail(e.target.value)}
               className="registerInput"
               required
             />
+            <input type="hidden" name="address" value={address || " "} />
             <input
               type="password"
               placeholder="Password"
