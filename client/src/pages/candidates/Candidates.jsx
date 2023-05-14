@@ -16,7 +16,6 @@ export default function Candidates({ state }) {
   const [candidateName, setCandidateName] = useState("");
   const [dept, setDept] = useState("");
   const [shake, setShake] = useState(false);
-  // const [candidatesList, setCandidatesList] = useState([]);
   const [candidateAdded, setCandidateAdded] = useState(false);
   const [msg, setMsg] = useState(null);
 

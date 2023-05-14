@@ -10,6 +10,8 @@ import Register from "./pages/register/Register";
 import Results from "./pages/results/Results";
 import VotingArea from "./pages/voting-area/VotingArea";
 import PrivateRoute from "./privateRoute/privateRoute";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // Web3
 import Web3 from "web3";
 import detectEthereumProvider from "@metamask/detect-provider";
@@ -40,7 +42,7 @@ function App() {
           contract: contract,
         });
       } else {
-        console.error("Please Install Metamask", err);
+        console.error(err);
       }
     };
 
@@ -122,6 +124,7 @@ function App() {
           }
         />
       </Routes>
+      <ToastContainer />
     </>
   );
 }

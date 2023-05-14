@@ -1,19 +1,22 @@
-.resultsContainer{
+.resultsContainer {
     display: flex;
     width: 100%;
-    
+
 }
-.results{
-    flex:10;
+
+.results {
+    flex: 10;
     width: 100%;
     height: 92vh;
-   
+
 }
-.resultsWrapper{
+
+.resultsWrapper {
     width: 80%;
     margin: 1rem 2rem;
     user-select: none;
 }
+
 .resultsSection {
     display: flex;
     gap: 1rem;
@@ -21,7 +24,8 @@
     padding: 1rem 0 1rem;
 
 }
-.rightSection{
+
+.rightSection {
     flex: 4;
     display: flex;
     justify-content: space-between;
@@ -29,30 +33,37 @@
     flex-direction: column;
     width: 50%;
     text-align: center;
-    background-color: #fff3eb;
+    background-color: #fffaeb;
     border-radius: 6px;
-    padding-bottom: .4rem;
+    padding-bottom: .8rem;
     overflow: hidden;
-    
 }
-.rightSection .resultText{
-    background-image: linear-gradient(#f89827, #f67629) ;
-    color:#f9f9f9;
+
+.rightSection .resultText {
+    background-image: linear-gradient(#f89827, #f67629);
+    color: #fff4db;
     font-weight: 600;
     font-size: 1.2rem;
     letter-spacing: 1px;
     line-height: 1.5;
-    padding: .7rem 0;
+    padding: .2rem .3rem;
+    margin-bottom: 1rem;
 }
+
+.resultText h1 {
+    color: #fffdeb;
+    line-height: 1;
+}
+
 .rightSection .chart {
     min-height: 200px;
 }
 
 /* Table */
 
-.resultTable, .rankTable{
+.resultTable {
     flex: 8;
-    border-collapse:collapse;
+    border-collapse: collapse;
     border-radius: 6px;
     overflow: hidden;
     font-weight: 600;
@@ -60,62 +71,38 @@
     color: #3c3e45;
     width: 100%;
 }
-.rankTable {
-    color: #6b2c04;
-    margin-top: 1rem;
-}
-.listHead, .rankHead{
+
+.listHead {
     font-weight: 500;
     font-size: 1.1rem;
 }
+
 .listHead th {
     background-color: #366ebb;
     color: aliceblue;
     padding: 1rem;
 }
-.rankHead th {
-    padding: .8rem;
-    background-color: #f67629;
-    color: #fff3eb;
-}
-.resultTable, .rankTable td{
+
+.resultTable td {
     letter-spacing: 1px;
     padding: .4rem 0;
     text-align: center;
     border: 1px solid rgb(255, 255, 255);
 
 }
-.resultTable tr{
+
+.resultTable tr {
     background-color: aliceblue;
 }
-.rankTable td{
-    padding: 1rem 0;
-    border: none;
 
-}
 
-.resultTable tr:hover{
+.resultTable tr:hover {
     background-color: rgb(109, 186, 233);
     color: aliceblue;
 }
-.rankTable tr:hover {
-    background-color: #ffb98e;
-}
 
-.toggle {
-    background-color: #f67629;
-    outline: none;
-    border: none;
-    color: #ffcd94;
-    margin-bottom: .8rem;
-    border-radius: 0 0 4px 4px;
-    font-weight: 600;
-    padding: .1rem .9rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all .3s ease;
-    letter-spacing: 1px;
-}
-.toggle:hover{
-    color: #f9f7e1;
+#rank {
+    font-size: 1.8rem;
+    background-color: #366ebb;
+    color: aliceblue;
 }

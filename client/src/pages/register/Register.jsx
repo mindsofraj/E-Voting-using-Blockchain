@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import Spinner from "../../components/spinner/Spinner";
 import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Register({ state }) {
   const [name, setName] = useState("");
@@ -58,6 +60,16 @@ export default function Register({ state }) {
       if (res.data.status === 409) {
         setRegisterStatus(res.data.message);
         setLoading(false);
+        toast.error(res.data.message, {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       } else {
         setLoading(true);
         // Sending Ethereum Address to Email
@@ -70,16 +82,36 @@ export default function Register({ state }) {
           )
           .then(
             (result) => {
-              console.log("Check your email for Ethereum Account Address");
               setLoading(false);
               navigate("/login");
+              toast.info("Check your mail for your Ethereum Account Address!", {
+                position: "top-right",
+                autoClose: 7000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+              });
             },
             (error) => {
               setRegisterStatus(error.text);
             }
           );
+
         navigate("/login");
         setLoading(false);
+        toast.success("Registered Successfully!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       }
     });
   };

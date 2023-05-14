@@ -25,11 +25,10 @@ contract Voting {
         bool doesExist;
     }
 
-
-
     uint numCandidates;
     uint numVoters;
     uint[] public aadhaarList;
+    bool public publishResults = false;
 
     mapping(uint => Candidate) candidates;
     mapping(uint => Voter) voters;
@@ -54,6 +53,7 @@ contract Voting {
         numVoters = 0;
         numCandidates = 0;
         delete aadhaarList;
+        publish(false);
     }
 
     // Voter for Candidates
@@ -68,7 +68,7 @@ contract Voting {
     }
 
     // Check if voter has voted or not
-    function checkIfVoted(uint _aadhaarID) public view  returns (bool)  {
+    function checkIfVoted(uint _aadhaarID) public view returns (bool) {
         return voters[_aadhaarID].voted;
     }
 
@@ -106,5 +106,11 @@ contract Voting {
             }
         }
         return numOfVotes;
+    }
+
+    // Store Result Published State
+    function publish(bool status) public returns (bool) {
+        publishResults = status;
+        return publishResults;
     }
 }

@@ -4,6 +4,8 @@ import { useContext, useState } from "react";
 import Axios from "axios";
 import { AuthContext } from "../../context/authContext";
 import Spinner from "../../components/spinner/Spinner";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -35,6 +37,16 @@ export default function Login() {
         login(res.data);
         setLoading(false);
         navigate("/");
+        toast.success("Login Successfull!", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       }
     });
   };
