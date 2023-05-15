@@ -43,11 +43,29 @@ export default function Register({ state }) {
     setAddress(addressList[(Math.random() * addressList.length) | 0]);
   }, [addressList]);
 
+  useEffect(() => {
+    if (address) {
+      setPassword(address.slice(-5));
+    }
+  }, [address]);
+
   // Register Voter
   const registerVoter = (e) => {
     e.preventDefault();
     setLoading(true);
-
+    if (!address && !password) {
+      toast.error("Technical Error Occured 🛠 Please Try Again!", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      navigate("/login");
+    }
     // Inserting data to database
     Axios.post("http://localhost:3000/register", {
       name: name,
@@ -84,7 +102,7 @@ export default function Register({ state }) {
             (result) => {
               setLoading(false);
               navigate("/login");
-              toast.info("Check your mail for your Ethereum Account Address!", {
+              toast.info("Password and Ethereum Address sent to your mail!", {
                 position: "top-right",
                 autoClose: 7000,
                 hideProgressBar: false,
@@ -176,13 +194,14 @@ export default function Register({ state }) {
               required
             />
             <input type="hidden" name="address" value={address || " "} />
-            <input
+            <input type="hidden" name="password" value={password || " "} />
+            {/* <input
               type="password"
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
               className="registerInput"
               required
-            />
+            /> */}
             <input
               type="text"
               placeholder="Mobile No."
