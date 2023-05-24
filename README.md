@@ -8,8 +8,6 @@ This repository contains an implementation of a blockchain-based voting system, 
 - [Technology Stack](#technology-stack)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 Traditional voting systems often face challenges related to security, transparency, and trust. Blockchain technology offers a promising solution to these challenges by providing a decentralized and immutable ledger where votes can be securely recorded. This project demonstrates the application of blockchain in a voting system, allowing participants to cast their votes and verify the integrity of the overall process.
@@ -35,4 +33,31 @@ To install and set up the voting system locally, follow the steps below:
 
 1. Clone this repository:
    ```shell
-   git clone https://github.com/your-username/voting-system.git
+   git clone https://github.com/mindsofraj/E-Voting-using-Blockchain.git
+2. Install the necessary dependencies.
+   ```shell
+   cd client
+   npm install
+   ```shell
+   cd server
+   npm install
+4. Install the [Ganache UI](https://trufflesuite.com/ganache/) and quickstart a workspace.
+5. Next we need install Truffle to Compile and Deploy our Smart Contracts.
+   ```shell
+   npm install -g truffle
+6. After installation of truffle connect the truffle-config.js file with the Ganache.
+8. Start the blockchain network and deploy the smart contracts.
+9. Launch the web application and access it via a web browser.
+   In client side run,
+   ```shell
+   npm run dev
+   In server side run,
+   ```shell
+   node index.js 
+   
+## Usage
+1. Visit the web application through your preferred web browser.
+2. Create an account or log in if you already have one.
+3. Follow the on-screen instructions to cast your vote.
+4. After voting, admin will publish results and  you can verify the integrity of your vote and the overall results through cryptographic proofs and transparency features provided by the system.
+5. Explore the audit functionality to analyze voting patterns and perform post-election investigations.
