@@ -2,7 +2,6 @@
 
 This repository contains an implementation of a blockchain-based voting system, leveraging the power and security of blockchain technology to enhance the transparency and integrity of voting processes. The aim of this project is to explore the potential of blockchain in revolutionizing the way we conduct elections, ensuring trust, immutability, and verifiability of votes.
 
-![Website](https://github.com/mindsofraj/E-Voting-using-Blockchain/blob/master/Screenshots/dashboard.png)
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -36,7 +35,7 @@ To install and set up the voting system locally, follow the steps below:
    ```shell
    git clone https://github.com/mindsofraj/E-Voting-using-Blockchain.git
 2. Install the necessary dependencies.
-4. Install the [Ganache UI](https://trufflesuite.com/ganache/) and quickstart a workspace.
+4. Download and Install the [Ganache UI](https://trufflesuite.com/ganache/) and quickstart a workspace.
 5. Next we need install Truffle to Compile and Deploy our Smart Contracts.
    ```shell
    npm install -g truffle
