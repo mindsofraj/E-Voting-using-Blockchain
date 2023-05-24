@@ -26,9 +26,9 @@ Traditional voting systems often face challenges related to security, transparen
 
 ## Technology Stack
 The voting system is built using the following technologies:
-- **Blockchain**: The underlying blockchain infrastructure is implemented using a popular blockchain framework Ethereum.
-- **Smart Contracts**: Smart contracts are utilized to define the rules and logic of the voting process, ensuring automation and transparency.
-- **Web Application**: A user-friendly web interface is created using Reactjs for participants to interact with the voting system, cast votes, and verify results.
+- **Blockchain**: Ethereum Framework is used as it is most popular framework for making dapps.
+- **Smart Contracts**: Smart contracts are written using Solidity to define the rules and logic of the voting process, ensuring automation and transparency.
+- **Web Application**: Reactjs Library is used for creating a user-friendly web interface, to interact with the voting system, cast votes, and verify results.
 
 ## Installation
 To install and set up the voting system locally, follow the steps below:
@@ -46,7 +46,7 @@ To install and set up the voting system locally, follow the steps below:
 9. Launch the web application and access it via a web browser.
    
 ## Usage
-*First Account in Ganache is the Admin Address for adding candidates and publishing results.
+*First Account in Ganache is the Admin Address for adding candidates and publishing results*.
 1. Visit the web application through your preferred web browser.
 2. Create an account or log in if you already have one.
 3. Follow the on-screen instructions to cast your vote.
