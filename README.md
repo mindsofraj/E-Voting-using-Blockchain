@@ -10,6 +10,7 @@ This repository contains an implementation of a blockchain-based voting system, 
 - [Technology Stack](#technology-stack)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Screenshots](#screenshots)
 
 ## Introduction
 Traditional voting systems often face challenges related to security, transparency, and trust. Blockchain technology offers a promising solution to these challenges by providing a decentralized and immutable ledger where votes can be securely recorded. This project demonstrates the application of blockchain in a voting system, allowing participants to cast their votes and verify the integrity of the overall process.
@@ -50,3 +51,10 @@ To install and set up the voting system locally, follow the steps below:
 3. Follow the on-screen instructions to cast your vote.
 4. After voting, admin will publish results and  you can verify the integrity of your vote and the overall results through cryptographic proofs and transparency features provided by the system.
 5. Explore the audit functionality to analyze voting patterns and perform post-election investigations.
+
+## Screenshots
+![register](https://github.com/mindsofraj/E-Voting-using-Blockchain/assets/76028896/4c603062-cd1d-49fa-a856-ce88ef8303fc)
+![candidates](https://github.com/mindsofraj/E-Voting-using-Blockchain/assets/76028896/7dcdf03b-1b73-4f32-bb78-c4c71f55ab11)
+![votingArea](https://github.com/mindsofraj/E-Voting-using-Blockchain/assets/76028896/0ed3c291-feb3-4de6-a58c-a85dd25b3ea6)
+![results](https://github.com/mindsofraj/E-Voting-using-Blockchain/assets/76028896/f822bad7-0dd2-4cac-8648-79f2b85d42f9)
+
