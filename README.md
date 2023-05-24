@@ -2,6 +2,8 @@
 
 This repository contains an implementation of a blockchain-based voting system, leveraging the power and security of blockchain technology to enhance the transparency and integrity of voting processes. The aim of this project is to explore the potential of blockchain in revolutionizing the way we conduct elections, ensuring trust, immutability, and verifiability of votes.
 
+![Website](https://github.com/mindsofraj/E-Voting-using-Blockchain/blob/master/Screenshots/dashboard.png)
+
 ## Table of Contents
 - [Introduction](#introduction)
 - [Features](#features)
