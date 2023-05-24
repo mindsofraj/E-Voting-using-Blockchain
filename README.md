@@ -46,6 +46,7 @@ To install and set up the voting system locally, follow the steps below:
 9. Launch the web application and access it via a web browser.
    
 ## Usage
+*First Account in Ganache is the Admin Address for adding candidates and publishing results.
 1. Visit the web application through your preferred web browser.
 2. Create an account or log in if you already have one.
 3. Follow the on-screen instructions to cast your vote.
