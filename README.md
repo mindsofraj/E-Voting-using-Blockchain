@@ -23,10 +23,9 @@ Traditional voting systems often face challenges related to security, transparen
 
 ## Technology Stack
 The voting system is built using the following technologies:
-- **Blockchain**: The underlying blockchain infrastructure is implemented using a popular blockchain framework such as Ethereum or Hyperledger Fabric.
+- **Blockchain**: The underlying blockchain infrastructure is implemented using a popular blockchain framework Ethereum.
 - **Smart Contracts**: Smart contracts are utilized to define the rules and logic of the voting process, ensuring automation and transparency.
-- **Web Application**: A user-friendly web interface is provided for participants to interact with the voting system, cast votes, and verify results.
-- **Cryptographic Algorithms**: Various cryptographic algorithms such as hashing, digital signatures, and zero-knowledge proofs are employed to ensure security and privacy.
+- **Web Application**: A user-friendly web interface is created using Reactjs for participants to interact with the voting system, cast votes, and verify results.
 
 ## Installation
 To install and set up the voting system locally, follow the steps below:
@@ -35,12 +34,6 @@ To install and set up the voting system locally, follow the steps below:
    ```shell
    git clone https://github.com/mindsofraj/E-Voting-using-Blockchain.git
 2. Install the necessary dependencies.
-   ```shell
-   cd client
-   npm install
-   ```shell
-   cd server
-   npm install
 4. Install the [Ganache UI](https://trufflesuite.com/ganache/) and quickstart a workspace.
 5. Next we need install Truffle to Compile and Deploy our Smart Contracts.
    ```shell
@@ -48,12 +41,6 @@ To install and set up the voting system locally, follow the steps below:
 6. After installation of truffle connect the truffle-config.js file with the Ganache.
 8. Start the blockchain network and deploy the smart contracts.
 9. Launch the web application and access it via a web browser.
-   In client side run,
-   ```shell
-   npm run dev
-   In server side run,
-   ```shell
-   node index.js 
    
 ## Usage
 1. Visit the web application through your preferred web browser.
